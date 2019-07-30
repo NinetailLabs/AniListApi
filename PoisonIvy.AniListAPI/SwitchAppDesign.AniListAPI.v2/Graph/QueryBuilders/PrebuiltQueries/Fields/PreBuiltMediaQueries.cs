@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using SwitchAppDesign.AniListAPI.v2.Graph.Common;
 using SwitchAppDesign.AniListAPI.v2.Types;
 
@@ -48,6 +46,11 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
         {
             _builder.AddField(_builder.MediaQueryFields.IdQueryField());
             _builder.AddField(_builder.MediaQueryFields.IdMalQueryField());
+            _builder.AddField(_builder.MediaQueryFields.MeanScoreQueryField());
+            _builder.AddField(_builder.MediaQueryFields.AverageScoreQueryField());
+            _builder.AddField(_builder.MediaQueryFields.PopularityQueryField());
+            _builder.AddField(_builder.MediaQueryFields.SiteUrlQueryField());
+            _builder.AddField(_builder.MediaQueryFields.TypeQueryField());
             _builder.AddField(_builder.MediaQueryFields.TitleQueryField(
                 fields: new List<GraphQueryField>
                 {
@@ -70,8 +73,7 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
                 fields: new List<GraphQueryField>
                 {
                     _builder.OtherFields.CoverImageData.MediumQueryField(),
-                    _builder.OtherFields.CoverImageData.LargeQueryField(),
-                    _builder.OtherFields.Character.IdQueryField()
+                    _builder.OtherFields.CoverImageData.LargeQueryField()
                 }));
             _builder.AddField(_builder.MediaQueryFields.BannerImageQueryField());
             _builder.AddField(_builder.MediaQueryFields.GenresQueryField());
@@ -122,14 +124,34 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
                                 fields: new List<GraphQueryField>
                                 {
                                     _builder.OtherFields.Character.IdQueryField(),
+                                    _builder.OtherFields.Character.DescriptionQueryField(),
                                     _builder.OtherFields.Character.NameQueryField(
                                         fields: new List<GraphQueryField>
                                         {
                                             _builder.OtherFields.Name.FirstQueryField(),
                                             _builder.OtherFields.Name.LastQueryField()
-                                        })
+                                        }),
+                                    _builder.OtherFields.Character.ImageQueryField(  
+                                        fields: new List<GraphQueryField>
+                                        {
+                                            _builder.OtherFields.CoverImageData.MediumQueryField(),
+                                            _builder.OtherFields.CoverImageData.LargeQueryField()
+                                        }),
+                                    _builder.OtherFields.Character.SiteUrlQueryField(),
                                 }),
-                            _builder.OtherFields.CharacterEdge.RoleQueryField()
+                            _builder.OtherFields.CharacterEdge.RoleQueryField(),
+                            _builder.OtherFields.CharacterEdge.VoiceActorsQueryField(
+                                fields: new List<GraphQueryField>
+                                {
+                                    _builder.OtherFields.Staff.NameQueryField(fields: new List<GraphQueryField>
+                                    {
+                                        _builder.OtherFields.Name.FirstQueryField(),
+                                        _builder.OtherFields.Name.LastQueryField()
+                                    }),
+                                    _builder.OtherFields.Staff.LanguageQueryField(),
+                                    _builder.OtherFields.Staff.IdQueryField(),
+                                    _builder.OtherFields.Staff.DescriptionQueryField()
+                                })
                         })
                 },
                 arguments: new List<object>

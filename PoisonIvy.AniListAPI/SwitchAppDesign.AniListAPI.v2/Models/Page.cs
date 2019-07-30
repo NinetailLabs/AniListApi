@@ -12,7 +12,7 @@ namespace SwitchAppDesign.AniListAPI.v2.Models
         public PageInfo pageInfo { get; set; }
         public User[] users { get; set; }
         public Media[] media { get; set; }
-        public Character[] characters { get; set; }
+        //public Character[] characters { get; set; }
         public Staff[] staff { get; set; }
         public Studio[] studios { get; set; }
         public MediaList[] mediaList { get; set; }

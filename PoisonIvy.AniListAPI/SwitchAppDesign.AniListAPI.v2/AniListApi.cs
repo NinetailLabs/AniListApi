@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using SwitchAppDesign.AniListAPI.v2.Common;
-using SwitchAppDesign.AniListAPI.v2.Graph.Fields;
 using SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders;
 using SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries;
 using SwitchAppDesign.AniListAPI.v2.Graph.Types;
@@ -100,6 +98,29 @@ namespace SwitchAppDesign.AniListAPI.v2
             }
 
             return await Task.FromResult<IEnumerable<Media>>(null);
+        }
+
+        /// <summary>
+        /// Retrieve an AniList entry via its associated MyAnimeList Id
+        /// </summary>
+        /// <param name="malId">MyAnimeList Id for the anime</param>
+        /// <returns>Anime entries for the Id</returns>
+        public async Task<Media> GetFullAnimeByMalId(int malId)
+        {
+            try
+            {
+                var query = new PreBuiltMediaQueries().MyAnimeListIdAnimeQuery(malId);
+                var rawQuery = GetBody(query);
+                var result = await _proxy.GenericPostAsync<Media>(rawQuery, AniListQueryType.Media);
+                
+                return result;
+            }
+            catch (Exception exception)
+            {
+                HandleException(exception);
+            }
+
+            return await Task.FromResult<Media>(null);
         }
 
         #region SharedBehaviour

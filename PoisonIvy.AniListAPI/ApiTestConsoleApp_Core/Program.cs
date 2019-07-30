@@ -1,28 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using ApiTestConsoleApp_Core.Tests;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 using SwitchAppDesign.AniListAPI.v2;
-using SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders;
 
 namespace ApiTestConsoleApp_Core
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static async Task Main()
         {
+            const string search = "Attack on Titan";
+            const int malId = 39063;
+            const int anilistId = 107418;
             var api = new AniListApi();
+            
+            var scum = await api.SearchFullAnime(search);
+            Console.WriteLine($"Found {scum.Count()} entries for: {search}");
+            
+            var malEntries = await api.GetFullAnimeByMalId(malId);
+            Console.WriteLine($"Found {malEntries.title.english} for Mal Id: {malId}");
 
-            //var output = api.GetBasicAnimeByAniListId(21).Result;
+            var anilistEntry = await api.GetBasicAnimeByAniListId(anilistId);
+            Console.WriteLine($"Found {anilistEntry.title.english} for Anilist Id: {anilistId}");
 
-            var scum = api.SearchFullAnime("Attack on Titan").Result;
-
-
+            Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
-
 
     }
 }

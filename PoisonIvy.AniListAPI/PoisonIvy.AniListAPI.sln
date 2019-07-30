@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoisonIvy.AniListAPI", "PoisonIvy.AniListAPI\PoisonIvy.AniListAPI.csproj", "{D3EAAD31-9271-4B2C-BF68-354C28A1D95B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchAppDesign.AniListAPI", "SwitchAppDesign.AniListAPI\SwitchAppDesign.AniListAPI.csproj", "{EC476108-549A-41A6-8D73-C4C3FD67E755}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchAppDesign.AniListAPI.v2", "SwitchAppDesign.AniListAPI.v2\SwitchAppDesign.AniListAPI.v2.csproj", "{ABBDD1A7-9934-400A-B909-C115F2C5AB62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestConsoleApp_Core", "ApiTestConsoleApp_Core\ApiTestConsoleApp_Core.csproj", "{0E4A7DA5-141A-4935-930D-575B927C8C69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTestConsoleApp_Core", "ApiTestConsoleApp_Core\ApiTestConsoleApp_Core.csproj", "{0E4A7DA5-141A-4935-930D-575B927C8C69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D3EAAD31-9271-4B2C-BF68-354C28A1D95B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3EAAD31-9271-4B2C-BF68-354C28A1D95B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3EAAD31-9271-4B2C-BF68-354C28A1D95B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3EAAD31-9271-4B2C-BF68-354C28A1D95B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC476108-549A-41A6-8D73-C4C3FD67E755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC476108-549A-41A6-8D73-C4C3FD67E755}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC476108-549A-41A6-8D73-C4C3FD67E755}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC476108-549A-41A6-8D73-C4C3FD67E755}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABBDD1A7-9934-400A-B909-C115F2C5AB62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABBDD1A7-9934-400A-B909-C115F2C5AB62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABBDD1A7-9934-400A-B909-C115F2C5AB62}.Release|Any CPU.ActiveCfg = Release|Any CPU

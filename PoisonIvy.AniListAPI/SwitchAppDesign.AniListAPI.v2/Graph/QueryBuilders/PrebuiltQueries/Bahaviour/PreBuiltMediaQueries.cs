@@ -41,5 +41,17 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
 
             return _builder.BuildQuery();
         }
+
+        internal GraphQuery MyAnimeListIdAnimeQuery(int malId)
+        {
+            _builder = new MediaQueryBuilder();
+
+            _builder.AddArgument(_builder.MediaQueryArguments.IdMyAnimeListArgument(malId));
+            _builder.AddArgument(_builder.MediaQueryArguments.TypeArgument(MediaType.Anime));
+            
+            FullAnimeFields();
+
+            return _builder.BuildQuery();
+        }
     }
 }
