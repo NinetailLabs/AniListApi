@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SwitchAppDesign.AniListAPI.v2.Graph.Common;
-using SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.Builders;
+﻿using SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.Builders;
 using SwitchAppDesign.AniListAPI.v2.Types;
 
 namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries

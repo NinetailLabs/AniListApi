@@ -105,8 +105,8 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
                                         fields: new List<GraphQueryField>
                                         {
                                             _builder.OtherFields.MediaTitle.EnglishQueryField(),
-                                            _builder.OtherFields.MediaTitle.RomajiQueryField()
                                         }),
+                                    _builder.MediaQueryFields.SiteUrlQueryField()
                                 }),
                             _builder.OtherFields.MediaEdge.RelationTypeQueryField(),
                             _builder.OtherFields.MediaEdge.IsMainStudioQueryField()
@@ -137,7 +137,7 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
                                             _builder.OtherFields.CoverImageData.MediumQueryField(),
                                             _builder.OtherFields.CoverImageData.LargeQueryField()
                                         }),
-                                    _builder.OtherFields.Character.SiteUrlQueryField(),
+                                    _builder.OtherFields.Character.SiteUrlQueryField()
                                 }),
                             _builder.OtherFields.CharacterEdge.RoleQueryField(),
                             _builder.OtherFields.CharacterEdge.VoiceActorsQueryField(
@@ -150,7 +150,13 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
                                     }),
                                     _builder.OtherFields.Staff.LanguageQueryField(),
                                     _builder.OtherFields.Staff.IdQueryField(),
-                                    _builder.OtherFields.Staff.DescriptionQueryField()
+                                    _builder.OtherFields.Staff.DescriptionQueryField(),
+                                    _builder.OtherFields.Staff.SiteUrlQueryField(),
+                                    _builder.OtherFields.Staff.ImageQueryField(
+                                        fields: new List<GraphQueryField>
+                                        {
+                                            _builder.OtherFields.CoverImageData.LargeQueryField()
+                                        })
                                 })
                         })
                 },
