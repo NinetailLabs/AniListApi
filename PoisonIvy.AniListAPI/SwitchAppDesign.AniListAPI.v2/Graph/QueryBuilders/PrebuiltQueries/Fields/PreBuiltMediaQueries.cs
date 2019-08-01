@@ -105,6 +105,8 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
                                         fields: new List<GraphQueryField>
                                         {
                                             _builder.OtherFields.MediaTitle.EnglishQueryField(),
+                                            _builder.OtherFields.MediaTitle.RomajiQueryField(),
+                                            _builder.OtherFields.MediaTitle.NativeQueryField()
                                         }),
                                     _builder.MediaQueryFields.SiteUrlQueryField()
                                 }),
