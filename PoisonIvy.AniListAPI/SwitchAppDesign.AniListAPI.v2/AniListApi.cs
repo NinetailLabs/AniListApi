@@ -79,7 +79,7 @@ namespace SwitchAppDesign.AniListAPI.v2
         /// <summary>
         /// Fetches a full instance of media model of type anime.
         /// </summary>
-        public async Task<IEnumerable<Media>> SearchFullAnime(string  searchPhrase)
+        public async Task<IEnumerable<Media>> SearchFullAnime(string searchPhrase)
         {
             try
             {
@@ -112,7 +112,30 @@ namespace SwitchAppDesign.AniListAPI.v2
                 var query = new PreBuiltMediaQueries().MyAnimeListIdAnimeQuery(malId);
                 var rawQuery = GetBody(query);
                 var result = await _proxy.GenericPostAsync<Media>(rawQuery, AniListQueryType.Media);
-                
+
+                return result;
+            }
+            catch (Exception exception)
+            {
+                HandleException(exception);
+            }
+
+            return await Task.FromResult<Media>(null);
+        }
+
+        /// <summary>
+        /// Retrieve an AniList entry via its Id
+        /// </summary>
+        /// <param name="aniListId">AniList Id for the entry</param>
+        /// <returns>Anime entry for the Id</returns>
+        public async Task<Media> GetFullAnimeById(int aniListId)
+        {
+            try
+            {
+                var query = new PreBuiltMediaQueries().FullAnimeQuery(aniListId);
+                var rawQuery = GetBody(query);
+                var result = await _proxy.GenericPostAsync<Media>(rawQuery, AniListQueryType.Media);
+
                 return result;
             }
             catch (Exception exception)
@@ -127,7 +150,8 @@ namespace SwitchAppDesign.AniListAPI.v2
 
         private HttpContent GetBody(GraphQuery query)
         {
-            return new StringContent(JsonConvert.SerializeObject(query, _serializerSettings), Encoding.UTF8, "application/json");
+            return new StringContent(JsonConvert.SerializeObject(query, _serializerSettings), Encoding.UTF8,
+                "application/json");
         }
 
         private static void HandleException(Exception e)
@@ -141,6 +165,7 @@ namespace SwitchAppDesign.AniListAPI.v2
 #endif
                     throw fieldException;
                 }
+
                 case GraphQueryArgumentInvalidException argumentException:
                 {
 #if DEBUG
@@ -149,6 +174,7 @@ namespace SwitchAppDesign.AniListAPI.v2
 
                     throw argumentException;
                 }
+
                 default:
                 {
 #if DEBUG

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentAssertions;
 using SwitchAppDesign.AniListAPI.v2;
 
 namespace ApiTestConsoleApp_Core
@@ -19,6 +20,9 @@ namespace ApiTestConsoleApp_Core
             
             var malEntries = await api.GetFullAnimeByMalId(malId);
             Console.WriteLine($"Found {malEntries.title.english} for Mal Id: {malId}");
+
+            var aniListIdEntry = await api.GetFullAnimeByAniListId(malEntries.id ?? 0);
+            aniListIdEntry.Should().BeEquivalentTo(malEntries);
 
             var anilistEntry = await api.GetBasicAnimeByAniListId(anilistId);
             Console.WriteLine($"Found {anilistEntry.title.english} for Anilist Id: {anilistId}");
