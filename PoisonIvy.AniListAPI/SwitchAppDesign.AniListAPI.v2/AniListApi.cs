@@ -146,6 +146,29 @@ namespace SwitchAppDesign.AniListAPI.v2
             return await Task.FromResult<Media>(null);
         }
 
+        /// <summary>
+        /// Retrieve a character from AniList by the character Id.
+        /// </summary>
+        /// <param name="characterId">AniList Id of the character to retrieve</param>
+        /// <returns>Character for the Id</returns>
+        public async Task<Character> GetFullCharacterById(int characterId)
+        {
+            try
+            {
+                var query = new PreBuiltCharacterQueries().FullCharacterQuery(characterId);
+                var rawQuery = GetBody(query);
+                var result = await _proxy.GenericPostAsync<Character>(rawQuery, AniListQueryType.Character);
+
+                return result;
+            }
+            catch (Exception exception)
+            {
+                HandleException(exception);
+            }
+
+            return await Task.FromResult<Character>(null);
+        }
+
         #region SharedBehaviour
 
         private HttpContent GetBody(GraphQuery query)
