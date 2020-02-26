@@ -22,6 +22,23 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
                     _builder.OtherFields.Name.NativeQueryField()
                 }));
             _builder.AddField(_builder.OtherFields.Character.DescriptionQueryField());
+            _builder.AddField(_builder.OtherFields.Character.ImageQueryField(
+                fields: new List<GraphQueryField>
+                {
+                    _builder.OtherFields.CoverImageData.MediumQueryField(),
+                    _builder.OtherFields.CoverImageData.LargeQueryField()
+                }));
+            _builder.AddField(_builder.OtherFields.Character.SiteUrlQueryField());
+
+            _builder.AddField(_builder.OtherFields.Character.MediaQueryField(
+                fields: new List<GraphQueryField>
+                {
+                    _builder.OtherFields.MediaConnection.EdgesQueryField(
+                        fields: new List<GraphQueryField>
+                        {
+                            _builder.OtherFields.MediaEdge.IdQueryField()
+                        })
+                }));
         }
     }
 }
