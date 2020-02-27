@@ -36,7 +36,27 @@ namespace SwitchAppDesign.AniListAPI.v2.Graph.QueryBuilders.PrebuiltQueries
                     _builder.OtherFields.MediaConnection.EdgesQueryField(
                         fields: new List<GraphQueryField>
                         {
-                            _builder.OtherFields.MediaEdge.IdQueryField()
+                            _builder.OtherFields.MediaEdge.IdQueryField(),
+                            _builder.OtherFields.MediaEdge.NodeQueryField(
+                                fields: new List<GraphQueryField>
+                                {
+                                    _builder.MediaQueryFields.TitleQueryField(
+                                        fields: new List<GraphQueryField>
+                                        {
+                                            _builder.OtherFields.MediaTitle.EnglishQueryField(),
+                                            _builder.OtherFields.MediaTitle.RomajiQueryField(),
+                                            _builder.OtherFields.MediaTitle.NativeQueryField()
+                                        }),
+                                    _builder.MediaQueryFields.CoverImageQueryField(
+                                        fields: new List<GraphQueryField>
+                                        {
+                                            _builder.OtherFields.CoverImageData.MediumQueryField(),
+                                            _builder.OtherFields.CoverImageData.LargeQueryField()
+                                        }),
+                                    _builder.MediaQueryFields.SiteUrlQueryField(),
+                                    _builder.MediaQueryFields.TypeQueryField()
+                                }),
+                            _builder.OtherFields.MediaEdge.CharacterRoleQueryField()
                         })
                 }));
         }
